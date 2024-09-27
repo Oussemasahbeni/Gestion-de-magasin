@@ -2,65 +2,35 @@ package com.esprit;
 
 import java.util.Date;
 
-import static java.lang.System.out;
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-
-    public static void afficher(Produit produit){
-        out.println("Produit : "+produit.libelle+" "+produit.marque+" "+produit.prix+" "+produit.dateExpiration);
-    }
     public static void main(String[] args) {
-        // Question 1:
-        Produit produit = new Produit();
-    // Question 2:
-        Produit produit1 = new Produit(1021, "Lait", "Delice");
-        Produit produit2 = new Produit(2510,"Yaourt","Vitalait");
-        Produit produit3 = new Produit(3250,"Tomate,","Sicam", 1.200);
 
-    // Question 3:
-        out.println("Question 3:");
+        int magainsNombreTotal = 0;
+        Produit produit1 = new Produit(1021, "Lait", "Delice",1.500,new Date("2022/12/12"));
+        Produit produit2 = new Produit(2510,"Yaourt","Vitalait",1.500,new Date("2022/12/12"));
+        Produit produit3 = new Produit(3250,"Tomate,","Sicam", 1.200,new Date("2022/12/12"));
+        produit1.setPrix(1.500);
+        produit2.setPrix(0.500);
+        Magasin magasin = new Magasin();
+        Magasin magasin2 = new Magasin();
+        magasin.setId("M1");
+        magasin.setAddress("Tunis");
+        magasin.setCapacity(50);
+        magasin2.setId("M2");
+        magasin2.setAddress("Sousse");
+        magasin2.setCapacity(50);
 
-        afficher(produit);
-        afficher(produit1);
-        afficher(produit2);
-        afficher(produit3);
+        magasin.addProduit(produit1);
+        magasin.addProduit(produit2);
+        magasin.addProduit(produit3);
+        System.out.println(magasin);
 
-    // Question 4:
-        out.println("Question 4:");
+        magasin2.addProduit(produit1);
+        magasin2.addProduit(produit2);
+        magasin2.addProduit(produit3);
 
-        produit1.prix = 1.500;
-        afficher(produit1);
-
-    // Question 5:
-        out.println("Question 5:");
-
-        produit2.prix = 0.500;
-        afficher(produit2);
-
-    // Question 6
-        out.println("Question 6:");
-
-        afficher(produit1);
-        afficher(produit2);
-        afficher(produit3);
-
-        //Question 7
-        out.println("Question 7:");
-
-        out.println(produit1);
-        out.println(produit2);
-        out.println(produit3);
-
-    // Question 8:
-        out.println("Question 8:");
-        produit1.dateExpiration =new Date("2022/12/12");
-        produit2.dateExpiration =new Date("2022/12/12");
-        produit3.dateExpiration =new Date("2022/12/12");
-        afficher(produit1);
-        afficher(produit2);
-        afficher(produit3);
+        magainsNombreTotal = magasin2.getProduits().length + magasin.getProduits().length;
+        System.out.println("Nombre total de produits dans les deux magasins: " + magainsNombreTotal);
 
     }
 }
