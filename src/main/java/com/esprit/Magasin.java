@@ -6,7 +6,7 @@ public class Magasin {
 
     private String id;
     private String address;
-    private Integer capacity = 50;
+    private final  Integer capacity = 50;
     private Produit[] produits = new Produit[capacity];
 
     public void addProduit(Produit produit) {
