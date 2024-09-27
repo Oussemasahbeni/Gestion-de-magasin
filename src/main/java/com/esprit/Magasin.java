@@ -35,14 +35,6 @@ public class Magasin {
         this.address = address;
     }
 
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
-
     public Produit[] getProduits() {
         return produits;
     }
