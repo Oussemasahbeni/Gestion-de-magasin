@@ -50,5 +50,9 @@ public class Main {
         System.out.println("Le magasin avec le plus de produits est : " + magasinAvecPlusDeProduits.getId());
 
 
+        magasin.deleteProduit(produit1);
+        System.out.println("Nombre total de produits dans les  magasins: " + Produit.nbProduits);
+
+
     }
 }

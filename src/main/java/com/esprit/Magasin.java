@@ -64,6 +64,18 @@ public class Magasin {
         }
     }
 
+    public boolean deleteProduit(Produit produit) {
+        for (int i = 0; i < produitCount; i++) {
+            if (produits[i].compare(produit)) {
+                produits[i] = produits[produitCount - 1];
+                produits[produitCount - 1] = null;
+                produitCount--;
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Magasin{" +
