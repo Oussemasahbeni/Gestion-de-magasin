@@ -1,32 +1,37 @@
 package com.esprit;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Magasin {
 
-    private String id;
+    private final Integer CAPACITY = 50;
+    private final Integer MAX_EMPLOYEES = 20;
+
+    private Integer id;
     private String address;
-    private final Integer capacity = 50;
-    private Produit[] produits = new Produit[capacity];
+    private String nom;
+    private Produit[] produits = new Produit[CAPACITY];
     private int produitCount = 0;
+    private List<Employee> employees;
 
     public void addProduit(Produit produit) {
         if (existProduit(produit)) {
             System.out.println("Produit existe deja with the id: "+produit.getId());
             return;
         }
-        if (produitCount < capacity) {
+        if (produitCount < CAPACITY) {
             produits[produitCount++] = produit;
         } else {
             System.out.println("Magasin is full");
         }
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -34,8 +39,25 @@ public class Magasin {
         return address;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     public void setAddress(String address) {
         this.address = address;
+    }
+
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public Produit[] getProduits() {
@@ -64,25 +86,28 @@ public class Magasin {
         }
     }
 
-    public boolean deleteProduit(Produit produit) {
+    public void deleteProduit(Produit produit) {
         for (int i = 0; i < produitCount; i++) {
             if (produits[i].compare(produit)) {
                 produits[i] = produits[produitCount - 1];
                 produits[produitCount - 1] = null;
                 produitCount--;
-                return true;
+                return;
             }
         }
-        return false;
     }
 
     @Override
     public String toString() {
         return "Magasin{" +
-                "id='" + id + '\'' +
+                "CAPACITY=" + CAPACITY +
+                ", MAX_EMPLOYEES=" + MAX_EMPLOYEES +
+                ", id=" + id +
                 ", address='" + address + '\'' +
-                ", capacity=" + capacity +
-                ", produits=" + Arrays.toString(Arrays.copyOf(produits, produitCount)) +
+                ", nom='" + nom + '\'' +
+                ", produits=" + Arrays.toString(produits) +
+                ", produitCount=" + produitCount +
+                ", employees=" + employees +
                 '}';
     }
 }
