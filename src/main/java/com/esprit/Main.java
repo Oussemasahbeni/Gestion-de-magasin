@@ -143,7 +143,9 @@ public class Main {
         System.out.println(vendeur3);
         System.out.println(vendeur4);
 
-        // question 11
+        // Additonal question
+        magasin.afficherNomreEmployeeParType();
+        magasin2.afficherNomreEmployeeParType();
 
 
 

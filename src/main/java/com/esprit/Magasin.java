@@ -78,6 +78,26 @@ public class Magasin {
         return false;
     }
 
+
+    public void afficherNomreEmployeeParType(){
+        int responsableCount = 0;
+        int caissierCount = 0;
+        int vendeurCount = 0;
+        for (Employee employee : employees) {
+            if (employee instanceof Responsable) {
+                responsableCount++;
+            } else if (employee instanceof Caissier) {
+                caissierCount++;
+            } else if (employee instanceof Vendeur) {
+                vendeurCount++;
+            }
+        }
+        System.out.println("Nombre de responsables: " + responsableCount);
+        System.out.println("Nombre de caissiers: " + caissierCount);
+        System.out.println("Nombre de vendeurs: " + vendeurCount);
+
+    }
+
     public static Magasin getMagasinAvecPlusDeProduits(Magasin magasin1, Magasin magasin2) {
         if (magasin1.getProduits().length > magasin2.getProduits().length) {
             return magasin1;
