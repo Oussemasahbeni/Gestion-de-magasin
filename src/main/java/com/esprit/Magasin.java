@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Magasin {
 
-    private final Integer CAPACITY = 50;
+    private final Integer CAPACITY = 2;
     private final Integer MAX_EMPLOYEES = 20;
 
     private Integer id;
@@ -15,15 +15,18 @@ public class Magasin {
     private int produitCount = 0;
     private List<Employee> employees;
 
-    public void addProduit(Produit produit) {
+    public void addProduit(Produit produit) throws MagasinPleinException, PrixNegatifException {
         if (existProduit(produit)) {
-            System.out.println("Produit existe deja with the id: "+produit.getId());
+            System.out.println("Produit existe deja with the id: " + produit.getId());
             return;
+        }
+        if (produit.getPrix() < 0) {
+            throw new PrixNegatifException("Prix doit etre positif");
         }
         if (produitCount < CAPACITY) {
             produits[produitCount++] = produit;
         } else {
-            System.out.println("Magasin is full");
+            throw new MagasinPleinException("Magasin is full");
         }
     }
 
